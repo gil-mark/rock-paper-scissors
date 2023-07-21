@@ -34,30 +34,33 @@ function playRound (computerChoice, userChoice) {
 }
 
 function playGame () {
-    let userChoice;
-    let buttons = document.querySelectorAll('button');
-    buttons.forEach((button) => {
-        button.addEventListener("click", function() {
-            userChoice = button.getAttribute('id')
-            console.log(userChoice);
-        })
-    });
-    
-    
-    
-    //let userChoice = prompt('What will you play?', '');
-    let computerChoice = getComputerChoice()
+        let computerChoice = getComputerChoice()
+        computerChoiceOutput.innerText = computerChoice;
+        let result = playRound(computerChoice, userChoice);
+        
 
-    let result = playRound(computerChoice, userChoice);
-    
-    if (result === 1) {
-        console.log(`You chose ${userChoice} and the computer chose ${computerChoice}. You win!`)
-    } else if (result === 0) {
-        console.log(`You chose ${userChoice} and the computer chose ${computerChoice}. It's a tie.`)
-    } else {
-        console.log(`You chose ${userChoice} and the computer chose ${computerChoice}. You lose :(`)
-    }
 
+        if (result === 1) {
+            resultOutput.innerText = `You chose ${userChoice} and the computer chose ${computerChoice}. You win!`
+        } else if (result === 0) {
+            resultOutput.innerText = `You chose ${userChoice} and the computer chose ${computerChoice}. It's a tie.`;
+        } else {
+            resultOutput.innerText = `You chose ${userChoice} and the computer chose ${computerChoice}. You lose :(`;
+        }
+
+        userChoice = undefined;
 }
 
-playGame();
+let computerChoiceOutput = document.querySelector('#computerChoice');
+let resultOutput = document.querySelector('#result');
+
+let userChoice;
+let buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener("click", function() {
+        userChoice = button.getAttribute('id')
+        playGame();
+    })
+});
+
+
