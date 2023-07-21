@@ -37,20 +37,36 @@ function playGame () {
         let computerChoice = getComputerChoice()
         computerChoiceOutput.innerText = computerChoice;
         let result = playRound(computerChoice, userChoice);
-        
-
 
         if (result === 1) {
-            resultOutput.innerText = `You chose ${userChoice} and the computer chose ${computerChoice}. You win!`
+            resultOutput.innerText = `You chose ${userChoice} and the computer chose ${computerChoice}. You win!`;
+            playerScore.innerText = +playerScore.innerText + 1
         } else if (result === 0) {
             resultOutput.innerText = `You chose ${userChoice} and the computer chose ${computerChoice}. It's a tie.`;
         } else {
             resultOutput.innerText = `You chose ${userChoice} and the computer chose ${computerChoice}. You lose :(`;
+            computerScore.innerText = +computerScore.innerText + 1
         }
 
-        userChoice = undefined;
+        if (+playerScore.innerText === 5) {
+            let reset = confirm('You win!');
+            if (reset === true || reset === undefined) {
+                playerScore.innerText = 0;
+                computerScore.innerText = 0;
+            }
+        } else if (+computerScore.innerText === 5) {
+            let reset = confirm('Sorry, you lose :(');
+            if (reset === true || reset === undefined) {
+                playerScoreScore.innerText = 0;
+                computerScore.innerText = 0;
+            }
+        }
 }
 
+let playerScore = document.querySelector('#playerScore');
+console.log(playerScore)
+let computerScore = document.querySelector('#computerScore');
+console.log(computerScore)
 let computerChoiceOutput = document.querySelector('#computerChoice');
 let resultOutput = document.querySelector('#result');
 

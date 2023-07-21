@@ -14,11 +14,16 @@
             height: 100vh;
         }
 
+        h1 {
+            margin-bottom: 64px;
+        }
+
         ul {
             list-style: none;
             display: flex;
             gap: 32px;
             padding: 0;
+            margin-bottom: 64px;
         }
 
         button {
@@ -26,14 +31,37 @@
             width: 100px;
         }
 
+        #result {
+            margin-bottom: 64px;
+        }
+
+        #scoreContainer {
+            display: flex;
+            gap: 32px;
+        }
+
+        .score {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .score div {
+            margin-bottom: 16px;
+        }
+
     </style>
 </head>
 <body>
     <div id="container">
         <h1>Rock Paper Scissors</h1>
+        
         <h2>Computer Choice:</h2>
+        
         <div id="computerChoice">？</div>
+        
         <h2>Player Choice:</h2>
+        
         <div id="playerChoice">
             <ul>
                 <li>
@@ -56,7 +84,21 @@
                 </li>
             </ul>
         </div>
-        <div id="result"></div>
+        
+        <div id="result">Welcome to Rock Paper Scissors. Make a choice to start the game.</div>
+
+        <div id="scoreContainer">
+            <div class="score">
+                <div id="playerScore">0</div>
+                <div>Player Score</div>
+            </div>
+
+            <div class="score">
+                <div id="computerScore">0</div>
+                <div>Computer Score</div>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>
